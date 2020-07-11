@@ -3261,7 +3261,11 @@ ImageBlobReduce.prototype._blob_to_image = function (env) {
 
 
 ImageBlobReduce.prototype._transform = function (env) {
+  if(typeof env.opts.edge!== 'undefined' && env.opts.edge==='short'){
+    var scale_factor = env.opts.max / Math.min(env.image.width, env.image.height);
+  }
   var scale_factor = env.opts.max / Math.max(env.image.width, env.image.height);
+	
 
   if (scale_factor > 1) scale_factor = 1;
 
